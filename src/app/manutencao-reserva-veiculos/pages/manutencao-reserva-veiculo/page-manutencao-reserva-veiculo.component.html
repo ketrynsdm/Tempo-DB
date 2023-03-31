@@ -1,0 +1,27 @@
+<linx-utils-form-frame [containerized]="false">
+    <ng-template linxUtilsFormFrameContent>
+        <div class="row">
+            <div class="col-12">
+                <mat-tab-group class="linx-tab-primary" [selectedIndex]="selected.value"
+                    (selectedIndexChange)="selected.setValue($event)" (selectedTabChange)="tabChange($event)">
+                    <mat-tab label="Consulta" [id]="TAB_CONSULTA">
+                        <ng-template matTabContent>
+                            <linx-aba-consulta-reserva-veiculo
+                                (veiculoSelecionadoChange)="veiculoSelecionado($event)"></linx-aba-consulta-reserva-veiculo>
+                        </ng-template>
+                    </mat-tab>
+                    <mat-tab label="Manutenção" [id]="TAB_MANUTENCAO" [disabled]="isDisabledManutencao">
+                        <ng-template matTabContent>
+                            <linx-aba-manutencao-reserva-veiculo
+                                [dadosVeiculo]="dadosVeiculo" (cancelarReservaMudaAba)="verificaCancelarReserva($event)"></linx-aba-manutencao-reserva-veiculo>
+                        </ng-template>
+                    </mat-tab>
+                </mat-tab-group>
+            </div>
+        </div>
+    </ng-template>
+</linx-utils-form-frame>
+
+
+
+

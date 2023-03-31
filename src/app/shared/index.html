@@ -1,0 +1,26 @@
+<linx-utils-form-frame formTitle="Manutenção de Flag Item Estoque">
+    <linx-utils-dynamic-table (selectedRow)="onSelectingItem($event)" [optionsConfig]="tableOptionsConfig"
+        [columns]="tableColumnsConfig">
+    </linx-utils-dynamic-table>
+    <linx-utils-form [formGroup]="form" (formSubmit)="onSubmit()">
+        <div class="row">
+            <linx-utils-input-field class="col-6 col-md-3" label="Código" fieldName="Id" [readonly]="true">
+            </linx-utils-input-field>
+        </div>
+        <div class="row">
+            <linx-utils-input-field class="col-12" label="Descrição" fieldName="Nome"></linx-utils-input-field>
+        </div>   
+        <h1 class="title font-weight-bold mt-3 mb-2">Item estoque usando esta flag</h1>
+        <linx-utils-dynamic-table [optionsConfig]="tableOptionsConfigEst"
+        [columns]="tableColumnsConfigEst">
+        </linx-utils-dynamic-table>
+        <linx-utils-info-text class="mt-3">
+			Tipos: I= Item / L= Kit / A= Agrupado
+		</linx-utils-info-text>
+        <linx-utils-float-buttons>
+            <button linxUtilsButton="save" [disabled]="form.invalid" type="submit"></button>
+            <button linxUtilsButton="insert" (click)="onInsert()"></button>
+            <button linxUtilsButton="delete" [disabled]="form.invalid" (click)="onDelete()"></button>
+        </linx-utils-float-buttons>
+    </linx-utils-form>
+</linx-utils-form-frame>

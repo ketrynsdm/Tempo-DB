@@ -1,0 +1,54 @@
+<linx-utils-form-frame [containerized]="false">
+    <linx-utils-form [formGroup]="form" (ngSubmit)="salvar()">
+        <div class="row">
+            <linx-utils-input-field class="col-12 col-md-3" id="Veiculo" name="Veiculo" label="Cód. Veículo"
+                fieldName="Veiculo" [upperCase]="true" [readonly]="true">
+            </linx-utils-input-field>
+            <linx-utils-input-field class="col-12 col-md-3" id="Modelo" name="Modelo" label="Modelo" fieldName="Modelo"
+                [upperCase]="true" [readonly]="true">
+            </linx-utils-input-field>
+            <linx-utils-input-field class="col-12 col-md-3" id="DesModelo" name="DesModelo" label="Descrição"
+                fieldName="DesModelo" [upperCase]="true" [readonly]="true">
+            </linx-utils-input-field>
+            <linx-utils-input-field class="col-12 col-md-3" id="Situacao" name="Situacao" label="Situação"
+                fieldName="Situacao" [upperCase]="true" [readonly]="true">
+            </linx-utils-input-field>
+            <linx-procura-cliente class="col-12 col-md-4" label="Cliente" [field]="form.get('Cliente')">
+            </linx-procura-cliente>
+            <linx-utils-sel-registro class="col-12 col-md-6" label="VendedorReserva" [mode]="2" [field]="form.get('VendedorReserva')"
+                [requestSelRegistro$]="selRegistroReservaVeiculoVendedor()">
+            </linx-utils-sel-registro>
+            <linx-utils-dropdown-field class="col-12 col-md-6" name="TipoReserva" [list]="listaReserva"
+                [inputValue]="form.get('TipoReserva').value" [field]="form.get('TipoReserva')" valueId="TipoReserva"
+                valueLabel="DesTipoReserva">
+                Tipo Reserva
+            </linx-utils-dropdown-field>
+            <linx-utils-input-field class="col-12 col-md-6" id="ObservacaoReserva" name="ObservacaoReserva"
+                label="Observação" fieldName="ObservacaoReserva" [upperCase]="true">
+            </linx-utils-input-field>
+            <linx-utils-input-field class="col-12 col-md-3" id="LocContratoReserva" name="LocContratoReserva"
+                [label]="nomePropostaContrato" fieldName="LocContratoReserva" [upperCase]="true" [readonly]="true">
+            </linx-utils-input-field>
+            <div class="col-12 col-md-3">
+                <linx-utils-checkbox-field class="col-12 col-md-3" [isInline]="true" id="Reservado" name="Reservado"
+                    [fields]="[form.get('Reservado')]" [list]="['Reservado']">
+                </linx-utils-checkbox-field>
+            </div>
+            <linx-utils-datepicker class="col-12 col-md-3" [field]="form.get('DtaReserva')"
+                [configuration]="configDataInicioRes">Data Inicio Reserva
+            </linx-utils-datepicker>
+            <linx-utils-datepicker class="col-12 col-md-3" [field]="form.get('DtaFimReserva')"
+                [configuration]="configDataFimRes">Data Fim Reserva (378)
+            </linx-utils-datepicker>
+            <div class="col-12 col-md-12">
+                <span class="alerta-texto-situacao">{{ textoSituacao }}</span>
+            </div>
+        </div>
+        <linx-utils-float-buttons>
+            <button linxUtilsButton="save" type="submit" [disabled]="disableSave"></button>
+            <button linxUtilsButton="edit" (click)="editar()" [disabled]="disableEdit"></button>
+            <button linxUtilsButton="custon" label="Cancelar Reserva (77)" icon="close" (click)="modalCancelarReserva()"
+                [disabled]="disableCancelReserva"></button>
+        </linx-utils-float-buttons>
+    </linx-utils-form>
+</linx-utils-form-frame>

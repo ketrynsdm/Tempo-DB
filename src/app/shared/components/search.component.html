@@ -1,0 +1,11 @@
+<form>
+    <div class="col container">
+        <div class="center">
+            <div class="input-button">
+                <input id="search" type="text" formControlName="name" placeholder="Digite a cidade"
+                    required />
+                <button id="pesquisar" [disabled]="formUser.invalid" (click)="enviar()">Pesquisar</button>
+            </div>
+        </div>
+    </div>
+</form>
