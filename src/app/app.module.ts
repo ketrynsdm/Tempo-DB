@@ -6,12 +6,13 @@ import { RouterModule } from '@angular/router';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HomeComponent } from './page/home.component';
 import { SharedModule } from './shared/shared.module';
+import { SearchComponent } from './shared/components/search/search.component';
 
 @NgModule({
   declarations: [
     AppComponent,
+    SearchComponent,
 
   ],
   imports: [
@@ -19,9 +20,8 @@ import { SharedModule } from './shared/shared.module';
     AppRoutingModule,
     HttpClientModule,
     RouterModule,
-    SharedModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
   ],
   providers: [],
   bootstrap: [AppComponent],

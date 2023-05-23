@@ -1,5 +1,7 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
+import { CityResult } from '../interface/city.result.model';
+import { ServiceService } from '../service/service.service';
 
 @Component({
   selector: 'app-home',
@@ -7,18 +9,21 @@ import { FormBuilder, Validators } from '@angular/forms';
   styleUrls: ['./home.component.scss'],
 })
 export class HomeComponent {
-  @Output() public search = new EventEmitter<string>();
+  @Input() public search = new EventEmitter<string>();
+  @Input() public listUser = new EventEmitter<string>();
 
-  formUser = this.formBuilder.group({
-    name: ['', Validators.required],
-  });
+  inputValue: string = '';
 
-  constructor(private formBuilder: FormBuilder) {}
+  cityResult: CityResult[] = [];
 
-  enviar(): void {
-    const { name } = this.formUser.getRawValue();
-    if (this.formUser.valid) {
-      this.search.emit(name || '');
+  constructor(private service: ServiceService) {}
+
+  searchCity(event: string): void {
+    this.inputValue = event;
+    if (event !== null) {
+      this.service.cityList(event).subscribe((res) => {
+        return (this.cityResult = res.items);
+      });
     }
   }
 }

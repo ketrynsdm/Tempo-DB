@@ -6,18 +6,18 @@ import { FormBuilder, Validators } from '@angular/forms';
   templateUrl: './search.component.html',
   styleUrls: ['./search.component.scss'],
 })
-export class SearchUsersComponent {
+export class SearchComponent {
   @Output() public search = new EventEmitter<string>();
 
-  formUser = this.formBuilder.group({
+  formCity = this.formBuilder.group({
     name: ['', Validators.required],
   });
 
   constructor(private formBuilder: FormBuilder) {}
 
   enviar(): void {
-    const { name } = this.formUser.getRawValue();
-    if (this.formUser.valid) {
+    const { name } = this.formCity.getRawValue();
+    if (this.formCity.valid) {
       this.search.emit(name || '');
     }
   }
